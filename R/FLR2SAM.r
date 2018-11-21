@@ -155,8 +155,7 @@ FLSAM2SAM <- function(stcks,tun,sumFleets=NULL,catch.vars=NULL){
 
 
     sam.dat <-setup.sam.data(surveys=surveysFLR,
-                              residual.fleets=residual.fleets, # Notice list
-                              sum.residual.fleets=sum.fleets,
+                              residual.fleet=residual.fleets[[1]], #TODO: (IU) Perhaps before this supports multiple fleets ? # Notice list
                               prop.mature=propMat,
                               stock.mean.weight=stockWeight,
                               catch.mean.weight=catchWeight,

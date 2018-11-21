@@ -23,11 +23,14 @@ SAM2FLR <- function(fit,ctrl){
   parssummary[,1]       <- gsub('[0-9]+', '',parssummary[,1])
   res@params  <- parssummary
 
-  res@rescov<- fit$sdrep$cov
-  paramname<- subset(res@params,name%in%c("beforeLastLogF","beforeLastLogN","lastLogF","lastLogN","logCatch",
-                                                 "logCatchByFleet","logfbar","logR","logssb","logtsb","comps"))
-  rownames(res@rescov) <- paramname$name
-  colnames(res@rescov) <- paramname$name
+  # (IU) cov is disable in the latest stockassessment in order to save memory
+  if(!is.null(fit$sdrep$cov)) {
+    res@rescov<- fit$sdrep$cov
+    paramname<- subset(res@params,name%in%c("beforeLastLogF","beforeLastLogN","lastLogF","lastLogN","logCatch",
+                                                   "logCatchByFleet","logfbar","logR","logssb","logtsb","comps"))
+    rownames(res@rescov) <- paramname$name
+    colnames(res@rescov) <- paramname$name
+  }
 
   #- Get component information
   if(length(ctrl@logP.vars)>0){

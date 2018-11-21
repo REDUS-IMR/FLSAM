@@ -124,7 +124,7 @@ FLSAM.control <- function(stcks,tun,sumFleets=vector(),catch.vars=NULL,scaleYear
   #Handle full coupling case
   ctrl@states[]           <- ctrlSAM$keyLogFsta
   ctrl@logN.vars[]        <- ctrlSAM$keyVarLogN
-  ctrl@logP.vars          <- ctrlSAM$keyVarLogP
+  ctrl@logP.vars          <- numeric(0) #TODO:(IU) before this -> ctrlSAM$keyVarLogP
   ctrl@catchabilities[]   <- ctrlSAM$keyLogFpar
   ctrl@power.law.exps[]   <- ctrlSAM$keyQpow
   ctrl@f.vars[]           <- ctrlSAM$keyVarF
